@@ -1,4 +1,13 @@
 package com.kieuanhdev.hello_spring_boot.dto.request;
 
+import java.time.LocalDate;
+
 public class UserUpdateRequest {
+
+     String password;
+     String firsname;
+     String lastname;
+     LocalDate dob;
+
+
 }
