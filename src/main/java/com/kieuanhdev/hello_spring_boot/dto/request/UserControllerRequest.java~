@@ -7,9 +7,10 @@ import java.time.LocalDateTime;
 
 public class UserControllerRequest {
 
-    @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
+    @Size(min = 3, max = 50, message = "USERNAME_INVALID")
     private String username;
 
+    @Size(min = 8, max = 50, message = "INVALID_PASSWOD")
     private String password;
 
     private String firsname;

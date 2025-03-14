@@ -3,6 +3,7 @@ package com.kieuanhdev.hello_spring_boot.Controller;
 import com.kieuanhdev.hello_spring_boot.dto.request.UserControllerRequest;
 import com.kieuanhdev.hello_spring_boot.dto.request.UserUpdateRequest;
 import com.kieuanhdev.hello_spring_boot.entity.User;
+import com.kieuanhdev.hello_spring_boot.dto.request.ApiResponse;
 import com.kieuanhdev.hello_spring_boot.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +20,10 @@ public class UserController {
     }
 
     @PostMapping
-    User createUser(@RequestBody @Valid UserControllerRequest request) {
-
-        return userService.createUser(request);
+    ApiResponse<User> createUser(@RequestBody @Valid UserControllerRequest request) {
+        ApiResponse<User> response = new ApiResponse<>();
+        response.setData(userService.createUser(request));
+        return response;
     }
 
     @GetMapping

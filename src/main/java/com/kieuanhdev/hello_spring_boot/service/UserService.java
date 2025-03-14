@@ -3,6 +3,8 @@ package com.kieuanhdev.hello_spring_boot.service;
 import com.kieuanhdev.hello_spring_boot.dto.request.UserControllerRequest;
 import com.kieuanhdev.hello_spring_boot.dto.request.UserUpdateRequest;
 import com.kieuanhdev.hello_spring_boot.entity.User;
+import com.kieuanhdev.hello_spring_boot.exception.AppException;
+import com.kieuanhdev.hello_spring_boot.exception.ErrorCode;
 import com.kieuanhdev.hello_spring_boot.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ public class UserService {
     }
 
     public User createUser(UserControllerRequest request) {
-        if(userRepository.existsUserByUsername(request.getUsername())) throw new RuntimeException("User already exists");
+        if(userRepository.existsUserByUsername(request.getUsername())) throw new AppException(ErrorCode.USER_EXISTED);
         User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());
